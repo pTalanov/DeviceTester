@@ -7,6 +7,10 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', '1.3.2', :group => :development
 
+gem 'clearance'
+gem 'formtastic'
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

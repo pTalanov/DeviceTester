@@ -1,4 +1,10 @@
 DeviceTester::Application.routes.draw do
+  resources :devices
+
+  resources :users
+
+  root :to => 'Users#new'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
