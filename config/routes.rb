@@ -1,9 +1,13 @@
 DeviceTester::Application.routes.draw do
-  resources :devices
+  match '/about' => 'Pages#about', :as => 'about'
+  match '/index' => 'Pages#index', :as => 'index'
+  match '/contacts' => 'Pages#contacts', :as => 'contacts'
 
+  resources :clients
+  resources :devices
   resources :users
 
-  root :to => 'Users#new'
+  root :to => redirect('/index')
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
