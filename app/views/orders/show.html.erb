@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Public:</b>
+  <%= @order.public_id %>
+</p>
+
+<p>
+  <b>Device description:</b>
+  <%= @order.device_description %>
+</p>
+
+<p>
+  <b>Device count:</b>
+  <%= @order.device_count %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @order.comments %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @order.client_id %>
+</p>
+
+<p>
+  <b>Task description:</b>
+  <%= @order.task_description %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

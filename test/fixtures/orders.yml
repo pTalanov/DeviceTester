@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  public_id: 1
+  device_description: MyText
+  device_count: 1
+  comments: MyText
+  client_id: 1
+  task_description: MyText
+
+two:
+  public_id: 1
+  device_description: MyText
+  device_count: 1
+  comments: MyText
+  client_id: 1
+  task_description: MyText

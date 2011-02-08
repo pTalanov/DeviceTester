@@ -1,0 +1,2 @@
+<%= link_to 'Редактировать', edit_client_path(client) %> |
+<%= link_to 'Новый заказ', {:controller => 'orders', :action => 'new', :client_id => client.id }%>

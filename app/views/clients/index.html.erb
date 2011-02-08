@@ -1,33 +1,13 @@
-<h1>Listing clients</h1>
+<h1>Список клиентов</h1>
 
-<table>
-  <tr>
-    <th>Company name</th>
-    <th>Phone</th>
-    <th>Fax</th>
-    <th>Email</th>
-    <th>Representative name</th>
-    <th>Comments</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul>
 <% @clients.each do |client| %>
-  <tr>
-    <td><%= client.company_name %></td>
-    <td><%= client.phone %></td>
-    <td><%= client.fax %></td>
-    <td><%= client.email %></td>
-    <td><%= client.representative_name %></td>
-    <td><%= client.comments %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li>
+    <%= render client %>
+    <%= render 'links_for',  :client => client %>
+  </li>
 <% end %>
-</table>
-
+</ul>
 <br />
 
 <%= link_to 'New Client', new_client_path %>

@@ -1,4 +1,6 @@
 DeviceTester::Application.routes.draw do
+  resources :orders
+
   match '/about' => 'Pages#about', :as => 'about'
   match '/index' => 'Pages#index', :as => 'index'
   match '/contacts' => 'Pages#contacts', :as => 'contacts'
