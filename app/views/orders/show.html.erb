@@ -1,35 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Public:</b>
+  <b>Код заказа:</b>
   <%= @order.public_id %>
 </p>
 
 <p>
-  <b>Device description:</b>
+  <b>Клиент:</b>
+  <%= link_to @order.client.company_name, client_path(@order.client) %>
+</p>
+
+<p>
+  <b>Описание прибора:</b>
   <%= @order.device_description %>
 </p>
 
 <p>
-  <b>Device count:</b>
+  <b>Количество предоставленных приборов:</b>
   <%= @order.device_count %>
 </p>
 
 <p>
-  <b>Comments:</b>
+  <b>Комментарии:</b>
   <%= @order.comments %>
 </p>
 
 <p>
-  <b>Client:</b>
-  <%= @order.client_id %>
-</p>
-
-<p>
-  <b>Task description:</b>
+  <b>Описание задания:</b>
   <%= @order.task_description %>
 </p>
 
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>

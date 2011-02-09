@@ -1,7 +1,5 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <%=  render 'user_errors' %>
-  <% end %>
+  <%=  render 'common/errors_explanation', :object => @user %>
   
   <%= f.submit %>
 

@@ -1,41 +1,15 @@
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<% #determine url to submit form to
+if params[:action] == 'new'
+  url = client_orders_path(@order.client)
+else
+  url = order_path(@order)
+end
+%>
 
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= semantic_form_for @order, :url => url do |f| %>
+  <%= render 'common/errors_explanation', :object => @order %>
+  <%= render 'inputs', :form => f %>
 
-  <div class="field">
-    <%= f.label :public_id %><br />
-    <%= f.text_field :public_id %>
-  </div>
-  <div class="field">
-    <%= f.label :device_description %><br />
-    <%= f.text_area :device_description %>
-  </div>
-  <div class="field">
-    <%= f.label :device_count %><br />
-    <%= f.text_field :device_count %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br />
-    <%= f.text_area :comments %>
-  </div>
-  <div class="field">
-    <%= f.label :client_id %><br />
-    <%= f.text_field :client_id %>
-  </div>
-  <div class="field">
-    <%= f.label :task_description %><br />
-    <%= f.text_area :task_description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit %>
+ 
 <% end %>

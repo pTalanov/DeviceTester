@@ -4,12 +4,32 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
   def index
-    @orders = Order.active
+    if params[:client_id]
+      @client = Client.find(params[:client_id])
+      @orders = @client.orders.active
+    else
+      @orders = Order.active
+    end
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @orders }
     end
+  end
+
+  def all
+    if params[:client_id]
+      @client = Client.find(params[:client_id])
+      @orders = @client.orders
+    else
+      @orders = Order.all
+    end
+
+    respond_to do |format|
+      format.html { render :action => 'index'}
+      format.xml  { render :xml => @orders }
+    end
+
   end
 
   # GET /orders/1
@@ -26,13 +46,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.xml
   def new
-    unless params[:client_id]
-      redirect_to root_path, :flash => "Internal error"
-    end
     @order = Client.find(params[:client_id]).orders.new
-
-
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @order }
@@ -47,7 +61,11 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.xml
   def create
-    @order = Order.new(params[:order])
+
+    @order = Client.find(params[:client_id]).orders.new
+    @order.update_attributes(params)
+    @order.is_active = true
+    generate_public_id @order
 
     respond_to do |format|
       if @order.save
@@ -87,4 +105,13 @@ class OrdersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  def generate_public_id order
+
+    order.public_id = "#{order.client_id}@#{Time.now.to_s(:number)}"
+
+  end
+
+
 end

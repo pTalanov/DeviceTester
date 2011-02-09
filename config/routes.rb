@@ -1,13 +1,24 @@
 DeviceTester::Application.routes.draw do
-  resources :orders
 
   match '/about' => 'Pages#about', :as => 'about'
   match '/index' => 'Pages#index', :as => 'index'
   match '/contacts' => 'Pages#contacts', :as => 'contacts'
+  #match '/clients/:client_id/new_order' => 'Orders#new', :as => 'new_order'
+  #match '/clients/:client_id/orders' => 'Orders#index'
 
-  resources :clients
-  resources :devices
+
+  match '/orders/all' => 'Orders#all', :as => 'orders_all'
+  resources :clients do
+    match 'orders/all' => 'Orders#all', :as => 'orders_all'
+    resources :orders, :only => [:create, :new, :index]  
+  end
+  resources :orders, :except => [:create, :new]
+
+
+  
   resources :users
+
+  #match 'orders' => 'orders#index'
 
   root :to => redirect('/index')
 

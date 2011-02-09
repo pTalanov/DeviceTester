@@ -150,8 +150,8 @@ td.sidebar {
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
+  padding: 5px 5px 1px 5px;
+  font-size: 16px;
   margin: -7px;
   background-color: #c00;
   color: #fff;
